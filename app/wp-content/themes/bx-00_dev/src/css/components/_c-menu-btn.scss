@@ -1,0 +1,85 @@
+@use '../settings' as setting;
+@use '../tools' as tool;
+.c-menu-btn {
+  width: 60px;
+  height: 50px;
+  padding: 13px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__bars {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: var(--c-txt);
+    transition: all ease-out 0.3s;
+    &::before,
+    &::after {
+      content: '';
+      background-color: var(--c-txt);
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transition: all ease-out 0.3s;
+    }
+    &::before {
+      top: -11px;
+    }
+    &::after {
+      bottom: -11px;
+    }
+    .c-menu-btn\:is-open & {
+      background: transparent;
+      &::before {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        transform: rotate(45deg);
+        bottom: 0;
+      }
+    }
+  }
+}
+.c-head-nav {
+}
+.c-gnav {
+  display: flex;
+  gap: setting.spaces(s);
+  flex-wrap: wrap;
+  &__item {
+  }
+  &__link {
+    padding: setting.spaces(xs) setting.spaces(s);
+    color: var(--c-txt);
+    display: block;
+    font-weight: setting.fontweight(b);
+  }
+}
+@include tool.min-screen(768px) {
+  .c-menu-btn {
+    display: none;
+  }
+}
+@include tool.max-screen(767px) {
+  .c-head-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    background: var(--c-bg);
+    display: none;
+    &\:is-open {
+      display: block;
+    }
+  }
+  .c-gnav {
+    gap: 0;
+    &__item {
+      width: 100%;
+    }
+  }
+}

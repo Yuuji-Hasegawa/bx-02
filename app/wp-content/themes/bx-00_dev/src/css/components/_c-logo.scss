@@ -1,0 +1,27 @@
+@use '../settings' as setting;
+.c-logo {
+  line-height: 1;
+  &\:head {
+    font-size: 38px;
+  }
+  &\:footer {
+    font-size: 70px;
+    flex-shrink: 0;
+  }
+}
+.c-footer-logo {
+  display: flex;
+  margin-bottom: setting.spaces(m);
+  gap: setting.spaces(xs);
+  align-items: center;
+  justify-content: center;
+}
+.c-footer-label {
+  font-size: setting.fontsize(m);
+  font-weight: setting.fontweight(b);
+  line-height: setting.lineheight(heading);
+  font-family: setting.$font-family-roboto;
+  &__link {
+    color: inherit;
+  }
+}

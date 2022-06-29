@@ -1,0 +1,40 @@
+@use '../settings' as setting;
+.c-btn {
+  background: setting.brandcolor(base);
+  display: table;
+  padding: setting.spaces(xs) setting.spaces(s);
+  font-weight: setting.fontweight(b);
+  font-size: setting.fontsize(m);
+  appearance: none;
+  border: solid 1px transparent;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  &:hover,
+  &:focus {
+    opacity: 1;
+    color: setting.brandcolor(light);
+    background: setting.brandcolor(dark);
+  }
+  &--submit {
+    padding-left: setting.spaces(m);
+    padding-right: setting.spaces(m);
+    transition: all setting.animes(duration) setting.animes(timing);
+    &:disabled {
+      pointer-events: none;
+      background: var(--c-overlay);
+      color: var(--c-dimmed);
+    }
+  }
+  &\:topicList {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    max-width: max-content;
+    align-items: center;
+    gap: setting.spaces(xs);
+  }
+  &\:copy {
+    flex-shrink: 0;
+  }
+}

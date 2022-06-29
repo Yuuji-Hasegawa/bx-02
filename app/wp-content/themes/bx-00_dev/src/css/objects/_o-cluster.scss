@@ -1,0 +1,55 @@
+@use '../settings' as setting;
+@use '../tools' as tool;
+
+.o-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: setting.spaces(base);
+  &\:center,
+  &\:ftNav {
+    justify-content: center;
+  }
+  &\:s,
+  &\:sns {
+    gap: setting.spaces(s);
+  }
+  &\:xs,
+  &\:ftNav {
+    gap: setting.spaces(xs);
+  }
+  &\:xxs {
+    gap: setting.spaces(2xs);
+  }
+  &\:ftNav {
+    margin-bottom: setting.spaces(base);
+    @include tool.max-screen(767px) {
+      justify-content: flex-start;
+    }
+  }
+  &\:headLogo {
+    line-height: 1;
+    font-size: 32px;
+    align-items: center;
+    color: var(--c-txt);
+    gap: setting.spaces(xs);
+    padding: 10px 0;
+  }
+  &__headLogo {
+    line-height: setting.lineheight(heading);
+    font-family: setting.$font-family-roboto;
+    font-size: setting.fontsize(l);
+    font-weight: setting.fontweight(b);
+  }
+  &__ftItem {
+    flex-shrink: 0;
+    @include tool.max-screen(767px) {
+      width: calc((100% - setting.spaces(xs) * 2) / 2);
+    }
+    @include tool.max-screen(499px) {
+      width: 100%;
+    }
+  }
+  &\:sns {
+    margin-top: setting.spaces(xs);
+  }
+}
