@@ -9,10 +9,10 @@
 /app/wp-includes/*
 !/app/wp-content/themes
 /app/wp-content/themes/*
-!/app/wp-content/themes/bx-00/
-!/app/wp-content/themes/bx-00/**/*
-!/app/wp-content/themes/bx-00_dev/
-!/app/wp-content/themes/bx-00_dev/**/*
-/app/wp-content/themes/bx-00_dev/node_modules
-/app/wp-content/themes/bx-00_dev/pnpm-loack.yaml
+!/app/wp-content/themes/bx-02/
+!/app/wp-content/themes/bx-02/**/*
+!/app/wp-content/themes/bx-02_dev/
+!/app/wp-content/themes/bx-02_dev/**/*
+/app/wp-content/themes/bx-02_dev/node_modules
+/app/wp-content/themes/bx-02_dev/pnpm-loack.yaml
 index.php
