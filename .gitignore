@@ -15,4 +15,5 @@
 !/app/wp-content/themes/bx-02_dev/**/*
 /app/wp-content/themes/bx-02_dev/node_modules
 /app/wp-content/themes/bx-02_dev/pnpm-loack.yaml
+.htaccess
 index.php
