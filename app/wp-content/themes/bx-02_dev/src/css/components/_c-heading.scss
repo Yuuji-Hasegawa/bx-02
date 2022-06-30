@@ -4,7 +4,7 @@
   line-height: setting.lineheight(heading);
   font-size: clamp(setting.fontsize(l), calc((100vw - 650px) * 999), setting.fontsize(xl));
   text-align: center;
-  font-family: setting.$font-family-roboto;
+  font-family: setting.$font-family-fpt;
   & + * {
     margin-top: setting.spaces(l);
   }

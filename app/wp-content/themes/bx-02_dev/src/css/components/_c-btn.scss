@@ -26,7 +26,8 @@
       color: var(--c-dimmed);
     }
   }
-  &\:topicList {
+  &\:topicList,
+  &\:envelop {
     margin-left: auto;
     margin-right: auto;
     display: flex;

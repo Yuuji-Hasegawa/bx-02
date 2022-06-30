@@ -2,6 +2,17 @@
 .c-link {
   display: block;
   font-weight: setting.fontweight(b);
+  &\:nav {
+    font-size: setting.fontsize(l);
+    padding: setting.spaces(xs) setting.spaces(base);
+    color: #fff;
+    font-family: setting.$font-family-fpt;
+    &:hover,
+    &:focus {
+      background: setting.brandcolor(dark);
+      opacity: 1;
+    }
+  }
   &\:tag {
     font-weight: setting.fontweight(m);
     display: inline-flex;
@@ -31,6 +42,7 @@
     font-weight: setting.fontweight(m);
     padding: setting.spaces(s);
     text-align: left;
+    font-size: setting.fontsize(xs);
   }
   &\:bottomCat {
     align-items: center;
@@ -39,7 +51,8 @@
     display: inline-flex;
     gap: setting.spaces(3xs);
   }
-  &\:sns {
+  &\:sns,
+  &\:bottomSns {
     line-height: 1;
     font-size: 1.5rem;
     color: inherit;

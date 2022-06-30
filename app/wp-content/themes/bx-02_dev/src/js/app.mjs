@@ -12,3 +12,6 @@ lazyLoad();
 
 import { redume } from './redume.mjs';
 redume();
+
+import { reviewOpen } from './review-open.mjs';
+reviewOpen();

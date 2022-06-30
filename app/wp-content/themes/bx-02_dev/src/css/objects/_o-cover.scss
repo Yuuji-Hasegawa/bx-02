@@ -3,34 +3,98 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  &\:heroInner {
-    padding-left: setting.spaces(base);
-    padding-right: setting.spaces(base);
-    text-align: center;
+  &\:heroInner,
+  &\:vlink,
+  &\:footerInner {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    font-family: setting.$font-family-fpt;
+    z-index: 2;
+    color: #fff;
+  }
+  &\:heroInner {
+    padding-left: setting.spaces(base);
+    padding-right: setting.spaces(base);
+    text-align: center;
     align-items: center;
     justify-content: center;
     line-height: setting.lineheight(heading);
     font-weight: setting.fontweight(b);
     font-size: clamp(setting.fontsize(l), calc((100vw - 360px) * 999), setting.fontsize(xl));
     gap: setting.spaces(s);
-    font-family: setting.$font-family-roboto;
-    z-index: 2;
-    background: var(--c-overlay);
-    color: var(--c-bg);
-    text-shadow: 0 0 6px var(--c-dimmed);
   }
   &__lead-copy {
     font-size: clamp(setting.fontsize(m), calc((100vw - 360px) * 999), setting.fontsize(l));
-    font-family: setting.$font-family-roboto;
+    font-family: setting.$font-family-fpt;
+  }
+  &\:vlink {
+    padding: setting.spaces(base);
+  }
+  &\:footerInner {
+    padding-left: setting.spaces(base);
+    padding-right: setting.spaces(base);
+  }
+}
+.c-hero,
+.c-vlink {
+  position: relative;
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(setting.lightcolor(txt), 0.7);
   }
 }
 .c-hero {
-  max-height: 450px;
   overflow: hidden;
-  position: relative;
+  &__icon {
+    line-height: 1;
+    &\:footer {
+      font-size: clamp(setting.fontsize(l), calc((100vw - 360px) * 999), setting.fontsize(xl));
+    }
+  }
+  &__logo {
+    font-size: clamp(setting.fontsize(m), calc((100vw - 360px) * 999), setting.fontsize(l));
+  }
+}
+.c-vlink {
+  &__overlay {
+    transition: all setting.animes(duration) setting.animes(timing);
+    z-index: 1;
+  }
+  &:hover,
+  &:focus {
+    .c-vlink__overlay {
+      background: rgba(setting.brandcolor(base), 0.7);
+    }
+  }
+  &__inner {
+    margin-top: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: setting.spaces(base);
+  }
+  &__icon {
+    color: setting.brandcolor(base);
+    line-height: 1;
+    font-size: 50px;
+  }
+  &__txt {
+    display: inline-flex;
+    flex-direction: column;
+    font-weight: setting.fontweight(b);
+    line-height: setting.lineheight(heading);
+    font-size: setting.fontsize(l);
+    font-family: setting.$font-family-fpt;
+    &__font-small {
+      font-weight: setting.fontweight(m);
+      font-size: setting.fontsize(m);
+    }
+  }
 }

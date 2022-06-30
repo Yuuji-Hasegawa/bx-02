@@ -6,7 +6,7 @@
     gap: setting.spaces(xs);
     align-items: flex-start;
     > * {
-      font-family: setting.$font-family-roboto;
+      font-family: setting.$font-family-fpt;
       font-weight: setting.fontweight(b);
     }
     > * + * {
@@ -24,11 +24,11 @@
       max-width: max(calc(1000px - 100vw) * 999, calc((100% - setting.spaces(base) * 3) / 4));
     }
   }
-  &\:halfQuart {
+  &\:vlink {
     > * {
       flex-shrink: 0;
-      width: 50%;
-      max-width: max(calc(810px - 100vw) * 999, 25%);
+      width: clamp(50%, calc((768px - 100vw) * 999), 100%);
+      max-width: max(calc(768px - 100vw) * 999, 25%);
     }
   }
   &\:author {
@@ -45,5 +45,5 @@
   font-weight: setting.fontweight(m);
 }
 .c-topic-date {
-  font-family: setting.$font-family-roboto;
+  font-family: setting.$font-family-fpt;
 }

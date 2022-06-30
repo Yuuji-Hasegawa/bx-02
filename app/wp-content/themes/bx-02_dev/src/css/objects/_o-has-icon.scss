@@ -5,11 +5,13 @@
   gap: setting.spaces(3xs);
   &\:center,
   &\:goList,
-  &\:time {
+  &\:time,
+  &\:comment {
     align-items: center;
   }
   &\:xs,
-  &\:goList {
+  &\:goList,
+  &\:phone {
     gap: setting.spaces(xs);
   }
   &\:xxs {
@@ -28,7 +30,7 @@
   &\:time {
     line-height: 1;
     font-size: setting.fontsize(xs);
-    font-family: setting.$font-family-roboto;
+    font-family: setting.$font-family-fpt;
     color: var(--c-dimmed);
   }
   &\:redume {
@@ -47,6 +49,24 @@
     margin-bottom: setting.spaces(base);
     border-bottom: solid 1px var(--c-separator);
   }
+  &\:phone,
+  &\:footerphone {
+    line-height: 1;
+  }
+  &\:phone {
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(28px, calc((100vw - 650px) * 999), 50px);
+  }
+  &\:footerphone {
+    color: inherit;
+    font-size: 10px;
+  }
+  &\:comment {
+    line-height: 1;
+    color: setting.brandcolor(base);
+    font-weight: setting.fontweight(m);
+  }
 }
 .c-redume-marker {
   position: absolute;
@@ -57,4 +77,22 @@
   &\:is-open {
     transform: translateY(-50%) rotate(180deg);
   }
+}
+.c-phone-number {
+  font-family: setting.$font-family-fpt;
+  line-height: setting.lineheight(heading);
+  font-size: clamp(setting.fontsize(l), calc((100vw - 650px) * 999), setting.fontsize(xl));
+  font-weight: setting.fontweight(b);
+  &\:footer {
+    font-size: setting.fontsize(xs);
+    font-weight: setting.fontweight(n);
+  }
+}
+.c-comment-icon {
+  color: var(--c-dimmed);
+}
+.c-comment-count {
+  font-weight: setting.fontweight(b);
+  font-size: setting.fontsize(m);
+  font-family: setting.$font-family-fpt;
 }

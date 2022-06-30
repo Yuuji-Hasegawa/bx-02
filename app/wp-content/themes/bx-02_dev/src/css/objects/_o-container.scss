@@ -6,11 +6,21 @@
   margin-left: auto;
   margin-right: auto;
   &\:header {
-    position: relative;
-    padding: 3px clamp(setting.spaces(2xs), calc(3.5vw - setting.spaces(base)), setting.spaces(base));
+    padding: setting.spaces(base) clamp(setting.spaces(2xs), calc(3.5vw - setting.spaces(base)), setting.spaces(base));
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &\:is-header-scroll {
+    transition: all setting.animes(duration) setting.animes(timing);
+    background: var(--c-bg);
+    box-shadow: 0 1px 3px var(--c-separator);
   }
   &\:innerWrap,
   .c-inner-wrap {
@@ -32,6 +42,14 @@
   margin-right: auto;
 }
 .c-copyright {
-  font-family: setting.$font-family-roboto;
-  padding-bottom: setting.spaces(base);
+  font-size: setting.fontsize(xs);
+  text-align: center;
+  font-family: setting.$font-family-fpt;
+  margin-bottom: setting.spaces(base);
+}
+.c-footer-address {
+  line-height: setting.lineheight(body);
+  max-width: max-content;
+  text-align: center;
+  margin: 0 auto setting.spaces(base);
 }

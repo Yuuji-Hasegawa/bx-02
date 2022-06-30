@@ -9,6 +9,9 @@
     flex-shrink: 0;
     width: 100%;
   }
+  &\:ghost {
+    border-width: 0 0 1px 0;
+  }
   &\:term-inner {
     margin: 0.5rem 0 1rem -2rem;
   }
@@ -30,6 +33,12 @@
     border-color: var(--c-border);
     max-width: max(calc(650px - 100vw) * 999, 240px);
     background: var(--c-overlay);
+    &\:ghost {
+      background: transparent;
+      border-width: 1px 0 0 0;
+      align-items: center;
+      font-weight: setting.fontweight(m);
+    }
     &\:count {
       text-indent: -1.5rem;
       padding-left: 2.4rem;
@@ -55,5 +64,8 @@
     border-style: solid;
     border-color: var(--c-border);
     max-width: max(calc((650px - 100vw) * 999), calc(100% - 240px));
+    &\:ghost {
+      border-width: 1px 0 0 0;
+    }
   }
 }

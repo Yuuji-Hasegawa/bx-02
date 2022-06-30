@@ -6,6 +6,7 @@
 }
 
 $brand: #6393c4;
+$rating: #ffcf32;
 $brand-colors: (
   base: $brand,
   light: color.adjust($brand, $lightness: 15%, $saturation: -10%, $hue: -1deg),
@@ -35,6 +36,10 @@ $light-colors: (
   separator: hsla($grayH, $grayS, $grayDarkL),
   btnBg: hsla($grayH, $grayS, $grayDarkL),
 );
+
+@function darkcolor($key) {
+  @return map.get($dark-colors, $key);
+}
 
 $dark-colors: (
   bg: hsl($grayH, $grayS, $grayPaleL),

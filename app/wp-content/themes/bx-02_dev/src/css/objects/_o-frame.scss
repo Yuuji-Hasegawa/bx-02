@@ -1,4 +1,5 @@
 @use '../settings' as setting;
+@use '../tools' as tool;
 .o-frame {
   padding-bottom: calc((9 / 16) * 100%);
   position: relative;
@@ -7,6 +8,20 @@
   &\:square {
     aspect-ratio: 1/1;
     padding-bottom: calc((1 / 1) * 100%);
+  }
+  &\:switch {
+    @media screen and (orientation: portrait) {
+      aspect-ratio: 9/16;
+      padding-bottom: calc((16 / 9) * 100%);
+    }
+  }
+  &\:vlink {
+    aspect-ratio: 9/16;
+    padding-bottom: calc((16 / 9) * 100%);
+    @include tool.max-screen(767px) {
+      aspect-ratio: 16/9;
+      padding-bottom: calc((9 / 16) * 100%);
+    }
   }
   > * {
     overflow: hidden;

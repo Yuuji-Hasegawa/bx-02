@@ -54,7 +54,7 @@
 .c-front-box {
   padding-top: setting.spaces(l);
   padding-bottom: setting.spaces(l);
-  &:not(:last-of-type) {
+  &\:border-bottom {
     border-bottom: solid 1px var(--c-separator);
   }
 }
@@ -69,4 +69,11 @@
   background: var(--c-overlay);
   margin-bottom: setting.spaces(l);
   color: var(--c-dimmed);
+}
+.c-map-embed {
+  line-height: 1;
+  position: relative;
+  & > iframe {
+    filter: grayscale(100%);
+  }
 }
