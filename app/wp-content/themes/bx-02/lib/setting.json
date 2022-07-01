@@ -1,8 +1,7 @@
 {
     "site": {
-        "name": "BBN",
+        "name": "BLUE B NOSE",
         "keywords": [
-            "bbn",
             "blue b nose",
             "ブルー・ビー・ノーズ"
         ],
@@ -51,6 +50,26 @@
 			"事業項目5",
 			"事業項目6"
 		]
+	},
+	"store": {
+		"name": "BLUE B NOSE",
+		"l.o": "18:30",
+		"access": "xx線xx駅徒歩nn分",
+		"parking": {
+			"flag": "あり",
+			"net": "n",
+			"detail": "近隣にコインパーキングあり"
+		},
+		"station": "xx線 xx駅",
+		"reserve": "予約可能。予約優先",
+		"budgetLow": "4,000",
+		"budgetHight": "4,999",
+		"pay": [
+			"現金",
+			"クレジットカード（VISA、MASTER、JCB、AMEX、Diners）",
+			"電子マネー（交通系電子マネー、iD、QUICPay、PayPay）"
+		],
+		"smoking": "説明が入ります。"
 	},
 	"term": {
 		"domain": "bbns.jp",

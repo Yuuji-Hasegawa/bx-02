@@ -36,6 +36,15 @@
     }
   }
 }
+.c-min-heading {
+  font-weight: setting.fontweight(b);
+  line-height: setting.lineheight(heading);
+  color: #fff;
+  background: setting.brandcolor(base);
+  padding: setting.spaces(xs);
+  font-size: clamp(setting.fontsize(m), calc((100vw - 650px) * 999), setting.fontsize(l));
+  margin-bottom: setting.spaces(m);
+}
 .c-insert-img {
   margin: setting.spaces(base) 0;
 }
@@ -75,5 +84,6 @@
   position: relative;
   & > iframe {
     filter: grayscale(100%);
+    display: block;
   }
 }

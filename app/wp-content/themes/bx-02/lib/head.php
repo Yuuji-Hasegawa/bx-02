@@ -7,7 +7,13 @@ function set_my_title()
         $my_title = '見つかりませんでした';
     } elseif (is_archive()) {
         if (is_post_type_archive('news')) {
-            $my_title = 'これまでのお知らせ';
+            $my_title = 'News';
+        } elseif (is_post_type_archive('gallery')) {
+            $my_title = 'Gallery';
+        } elseif (is_post_type_archive('staff')) {
+            $my_title = 'Staff';
+        } elseif (is_post_type_archive('review')) {
+            $my_title = 'Review';
         } elseif (is_category()) {
             $my_title = single_cat_title('', false);
         } elseif (is_tag()) {
@@ -37,31 +43,130 @@ function get_page_title()
     global $post;
     $output = '<header class="c-hero"><h1 class="o-cover o-cover:heroInner">';
     if (is_front_page()) {
-        get_vars('site', 'copy') ? $copy = get_vars('site', 'copy') : $copy = 'Hello, World!';
-        get_vars('site', 'lead') ? $lead = get_vars('site', 'lead') : $lead = get_bloginfo('description');
-        $output .= $copy . '<span class="o-cover__lead-copy">' . $lead . '</span>';
+        $output .= '<span class="c-hero__icon">
+        <svg width="40" height="26" viewBox="0 0 40 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M34.8751 17.026H25.3882L30.1332 25.1604L34.8751 17.026ZM33.5541 17.785H26.7096L30.133 23.6537L33.5541 17.785Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M20.2654 25.1604H29.7529L25.0091 17.0254L20.2654 25.1604ZM21.5866 24.4014H28.4317L25.0091 18.5321L21.5866 24.4014Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M24.6281 17.026H15.1418L19.8856 25.1604L24.6281 17.026ZM23.307 17.785H16.4631L19.8855 23.6536L23.307 17.785Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M10.019 25.1604H19.5066L14.7628 17.0254L10.019 25.1604ZM11.3403 24.4014H18.1853L14.7628 18.5321L11.3403 24.4014Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 25.1604L9.48751 25.161L4.74376 17.026L0 25.1604ZM1.32123 24.4015L8.16623 24.4019L4.74373 18.5327L1.32123 24.4015Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M40.0001 8.51379H30.512L35.2563 16.6464L40.0001 8.51379ZM38.6787 9.27281H31.8335L35.2563 15.14L38.6787 9.27281Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M25.3887 16.6464H34.875L30.1318 8.51379L25.3887 16.6464ZM26.71 15.8874H33.5536L30.1318 10.0204L26.71 15.8874Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M29.7529 8.51379H20.2654L25.0091 16.6464L29.7529 8.51379ZM28.4315 9.27281H21.5868L25.0091 15.14L28.4315 9.27281Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M15.1418 16.6464H24.6281L19.8856 8.51379L15.1418 16.6464ZM16.4633 15.8874H23.3069L19.8855 10.0204L16.4633 15.8874Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M19.5066 8.51379H10.019L14.7628 16.6464L19.5066 8.51379ZM18.1851 9.27281H11.3405L14.7628 15.14L18.1851 9.27281Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M4.896 16.6464H14.3823L9.63975 8.51379L4.896 16.6464ZM6.21743 15.8874H13.061L9.63967 10.0204L6.21743 15.8874Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M30.512 8.13442L39.9995 8.13503L35.2551 0L30.512 8.13442ZM31.8331 7.3755L38.6781 7.37594L35.2552 1.50672L31.8331 7.3755Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M20.2654 8.13442L29.7529 8.13503L25.0091 0L20.2654 8.13442ZM21.5866 7.3755L28.4316 7.37594L25.0091 1.50672L21.5866 7.3755Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M10.019 8.13442L19.5066 8.13503L14.7628 0L10.019 8.13442ZM11.3403 7.3755L18.1853 7.37594L14.7628 1.50672L11.3403 7.3755Z"
+            fill="currentColor"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M14.3823 0H4.896L9.63975 8.13442L14.3823 0ZM13.0612 0.759011H6.21728L9.63967 6.62761L13.0612 0.759011Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>';
+        get_vars('site', 'name') ? $name = get_vars('site', 'name') : $name = get_bloginfo('name');
+        $output .= '<span class="c-hero__logo">' . $name . '</span>';
     } elseif (is_404()) {
-        $output .= 'Not Found.<span class="o-cover__lead-copy">見つかりませんでした。</span>';
+        $output .= '<span class="c-page-heading">Not Found.</span>';
     } elseif (is_page()) {
         if (is_page('privacy-policy')) {
-            $output .= 'Privacy Policy<span class="o-cover__lead-copy">' . get_the_title() .'</span>';
+            $output .= '<span class="c-page-heading">Privacy Policy</span>';
         } elseif (is_page('aboutus')) {
-            $output .= 'About Us<span class="o-cover__lead-copy">' . get_the_title() .'</span>';
+            $output .= '<span class="c-page-heading">About Us</span>';
         } else {
-            $output .= ucfirst($post->post_name) . '<span class="o-cover__lead-copy">' . get_the_title() .'</span>';
+            $output .= '<span class="c-page-heading">' . ucfirst($post->post_name) . '</span>';
         }
     } elseif (is_archive()) {
         if (is_post_type_archive('news')) {
-            $output .= 'Information<span class="o-cover__lead-copy">お知らせ</span>';
+            $output .= '<span class="c-page-heading">News</span>';
+        } elseif (is_post_type_archive('gallery')) {
+            $output .= '<span class="c-page-heading">Gallery</span>';
+        } elseif (is_post_type_archive('staff')) {
+            $output .= '<span class="c-page-heading">Staff</span>';
+        } elseif (is_post_type_archive('review')) {
+            $output .= '<span class="c-page-heading">Review</span>';
         } elseif (is_category()) {
-            $output .= single_cat_title('', false);
+            $output .= '<span class="c-page-heading">' . single_cat_title('', false) . '</span>';
         } elseif (is_tag()) {
-            $output .= '#' . single_tag_title('', false);
+            $output .= '<span class="c-page-heading">#' . single_tag_title('', false) . '</span>';
         } else {
-            $output .= 'Blog<span class="o-cover__lead-copy">ブログ</span>';
+            $output .= '<span class="c-page-heading">Blog</span>';
         }
     } else {
-        $output .= get_the_title();
+        $output .= '<span class="c-page-heading">' . get_the_title() . '</span>';
     }
     $output .= '</h1><picture class="o-frame">';
     if (is_single() || is_page()) {
@@ -93,7 +198,7 @@ function get_page_title()
         data-src="' . get_template_directory_uri() . '/img/hero.png"
         decoding="async" alt="" width="100%" height="100%" />';
     }
-    $output .= '</picture></header>';
+    $output .= '</picture><span class="c-hero__overlay"></span></header>';
     return $output;
 }
 function my_robots()

@@ -56,7 +56,37 @@ function set_bread_json()
                 "position" => 2,
                 "item" => array(
                     "@id" => esc_url(home_url('/news')),
-                    "name" => esc_attr('information')
+                    "name" => esc_attr('News')
+                )
+            );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('gallery')) {
+            $child[] = array(
+                "@type" => "ListItem",
+                "position" => 2,
+                "item" => array(
+                    "@id" => esc_url(home_url('/gallery')),
+                    "name" => esc_attr('Gallery')
+                )
+            );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('staff')) {
+            $child[] = array(
+                "@type" => "ListItem",
+                "position" => 2,
+                "item" => array(
+                    "@id" => esc_url(home_url('/staff')),
+                    "name" => esc_attr('Staff')
+                )
+            );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('review')) {
+            $child[] = array(
+                "@type" => "ListItem",
+                "position" => 2,
+                "item" => array(
+                    "@id" => esc_url(home_url('/review')),
+                    "name" => esc_attr('Review')
                 )
             );
             $array = array_merge($array, $child);
@@ -139,7 +169,7 @@ function set_bread_json()
                 "position" => 2,
                 "item" => array(
                     "@id" => esc_url(home_url('/news')),
-                    "name" => esc_attr('information')
+                    "name" => esc_attr('News')
                 )
             );
             $child[] = array(

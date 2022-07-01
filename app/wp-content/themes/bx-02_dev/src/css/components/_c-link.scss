@@ -52,7 +52,8 @@
     gap: setting.spaces(3xs);
   }
   &\:sns,
-  &\:bottomSns {
+  &\:bottomSns,
+  &\:staffSns {
     line-height: 1;
     font-size: 1.5rem;
     color: inherit;

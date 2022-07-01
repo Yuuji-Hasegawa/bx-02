@@ -60,7 +60,7 @@
   }
   &\:footerphone {
     color: inherit;
-    font-size: 10px;
+    font-size: 12px;
   }
   &\:comment {
     line-height: 1;
@@ -84,8 +84,7 @@
   font-size: clamp(setting.fontsize(l), calc((100vw - 650px) * 999), setting.fontsize(xl));
   font-weight: setting.fontweight(b);
   &\:footer {
-    font-size: setting.fontsize(xs);
-    font-weight: setting.fontweight(n);
+    font-size: setting.fontsize(s);
   }
 }
 .c-comment-icon {

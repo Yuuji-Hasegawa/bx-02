@@ -15,3 +15,5 @@ redume();
 
 import { reviewOpen } from './review-open.mjs';
 reviewOpen();
+
+import { fslightbox } from 'fslightbox';

@@ -17,7 +17,8 @@
     }
   }
   &\:s,
-  &\:footer-logo {
+  &\:footer-logo,
+  &\:staff-item {
     & > * + * {
       margin-top: setting.spaces(s);
     }

@@ -33,12 +33,72 @@ function create_post_type()
         'public' => true,
         'menu_position' =>10,
         'has_archive' => true,
-        'menu_icon'   => 'dashicons-clipboard',
+        'menu_icon'   => 'dashicons-format-aside',
         'rewrite' => array('with_front' => false),
         'supports' => array('title','editor')
         )
     );
+    register_post_type(
+        'gallery',
+        array(
+        'labels' => array(
+            'name' => 'ギャラリー',
+            'singular_name' => 'ギャラリー',
+            'add_new_item' => 'ギャラリーの新規追加',
+            'edit_item' => 'ギャラリーの編集'
+        ),
+        'has_archive' => true,
+        'public' => true,
+        'show_ui' => true,
+        'menu_position' => 14,
+        'supports' => array('title','thumbnail'),
+        'menu_icon'   => 'dashicons-format-gallery',
+        )
+    );
+    register_post_type(
+        'staff', /* post-type */
+        array(
+        'labels' => array(
+            'name' => 'スタッフ',
+            'singular_name' => 'スタッフ',
+            'add_new_item' => 'スタッフの新規追加',
+            'edit_item' => 'スタッフの編集'
+        ),
+        'has_archive' => true,
+        'public' => true,
+        'show_ui' => true,
+        'menu_position' => 15,
+        'supports' => array('editor','title','thumbnail'),
+        'menu_icon'   => 'dashicons-id',
+        )
+    );
+    register_post_type(
+        'review', /* post-type */
+        array(
+        'labels' => array(
+            'name' => '口コミ',
+            'singular_name' => '口コミ',
+            'add_new_item' => '口コミの新規追加',
+            'edit_item' => '口コミの編集'
+        ),
+        'has_archive' => true,
+        'public' => true,
+        'show_ui' => true,
+        'menu_position' => 16,
+        'supports' => array('editor','title','thumbnail'),
+        'menu_icon'   => 'dashicons-star-half',
+        )
+    );
 }
+function my_redirect_404()
+{
+    if (is_singular('staff') || is_singular('gallery') || is_singular('review')) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+    }
+}
+add_action('template_redirect', 'my_redirect_404');
 function custom_post_type_link($link, $post)
 {
     if ($post->post_type === 'news') {
@@ -98,6 +158,8 @@ function add_my_box()
 {
     $addtype = array( 'post', 'page', 'news' );
     add_meta_box('meta_info', 'SEO', 'meta_info_form', $addtype, 'side');
+    add_meta_box('meta_staff', 'スタッフ情報', 'meta_staff_form', 'staff', 'normal');
+    add_meta_box('meta_review', '口コミ情報', 'meta_review_form', 'review', 'normal');
 }
 add_action('admin_menu', 'add_my_box');
 
@@ -135,12 +197,57 @@ function meta_info_form()
                 $('#description-count').css('color', '#666');
             }
         });
-        $('.categorychecklist>li:first-child, .cat-checklist>li:first-child').before(
-            '<p style="font-size: 14px; margin: 0 0 8px;">※ 複数選んでも、表示は1つです。</p>');
     });
 </script>
 <?php
 }
+
+function meta_staff_form()
+{
+    global $post;
+    $staff_job = get_post_meta($post->ID, 'staff_job', true);
+    $staff_message = get_post_meta($post->ID, 'staff_message', true);
+    $staff_fb = get_post_meta($post->ID, 'staff_fb', true);
+    $staff_tw = get_post_meta($post->ID, 'staff_tw', true);
+    $staff_insta = get_post_meta($post->ID, 'staff_insta', true);
+    $staff_url = get_post_meta($post->ID, 'staff_url', true); ?>
+<h3 style="font-size: 14px; margin: 0 0 8px;">役職</h3>
+<input type="text" name="staff_job"
+    value="<?php echo esc_html($staff_job); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<h3 style="font-size: 14px; margin: 0 0 8px;">メッセージ</h3>
+<textarea id="staff_message" name="staff_message" rows="1" cols="40"
+    style="width: 100%; height: 60px"><?php echo htmlspecialchars($staff_message); ?></textarea>
+<h3 style="font-size: 14px; margin: 0 0 8px;">Facebook</h3>
+<input type="text" name="staff_fb"
+    value="<?php echo esc_html($staff_fb); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<h3 style="font-size: 14px; margin: 0 0 8px;">Twitter</h3>
+<input type="text" name="staff_tw"
+    value="<?php echo esc_html($staff_tw); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<h3 style="font-size: 14px; margin: 0 0 8px;">Instagram</h3>
+<input type="text" name="staff_insta"
+    value="<?php echo esc_html($staff_insta); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<h3 style="font-size: 14px; margin: 0 0 8px;">URL</h3>
+<input type="text" name="staff_url"
+    value="<?php echo esc_html($staff_url); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<?php
+}
+
+function meta_review_form()
+{
+    global $post;
+    $review_rate = get_post_meta($post->ID, 'review_rate', true); ?>
+<h3 style="font-size: 14px; margin: 0 0 8px;">レビュー（1〜5で入力してください）</h3>
+<input type="text" name="review_rate"
+    value="<?php echo esc_html($review_rate); ?>"
+    style="width: 100%;margin: 0 0 8px;" />
+<?php
+}
+
 function save_meta_info($post_id)
 {
     if (isset($_POST['meta_keywords'])) {
@@ -152,6 +259,41 @@ function save_meta_info($post_id)
         update_post_meta($post_id, 'meta_description', $_POST['meta_description']);
     } else {
         delete_post_meta($post_id, 'meta_description');
+    }
+    if (isset($_POST['staff_job'])) {
+        update_post_meta($post_id, 'staff_job', $_POST['staff_job']);
+    } else {
+        delete_post_meta($post_id, 'staff_job');
+    }
+    if (isset($_POST['staff_message'])) {
+        update_post_meta($post_id, 'staff_message', $_POST['staff_message']);
+    } else {
+        delete_post_meta($post_id, 'staff_message');
+    }
+    if (isset($_POST['staff_fb'])) {
+        update_post_meta($post_id, 'staff_fb', $_POST['staff_fb']);
+    } else {
+        delete_post_meta($post_id, 'staff_fb');
+    }
+    if (isset($_POST['staff_tw'])) {
+        update_post_meta($post_id, 'staff_tw', $_POST['staff_tw']);
+    } else {
+        delete_post_meta($post_id, 'staff_tw');
+    }
+    if (isset($_POST['staff_insta'])) {
+        update_post_meta($post_id, 'staff_insta', $_POST['staff_insta']);
+    } else {
+        delete_post_meta($post_id, 'staff_insta');
+    }
+    if (isset($_POST['staff_url'])) {
+        update_post_meta($post_id, 'staff_url', $_POST['staff_url']);
+    } else {
+        delete_post_meta($post_id, 'staff_url');
+    }
+    if (isset($_POST['review_rate'])) {
+        update_post_meta($post_id, 'review_rate', $_POST['review_rate']);
+    } else {
+        delete_post_meta($post_id, 'review_rate');
     }
 }
 add_action('save_post', 'save_meta_info');
