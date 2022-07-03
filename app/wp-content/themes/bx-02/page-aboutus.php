@@ -109,7 +109,7 @@
             </dd>
             <dt class="c-table__title c-table__title:ghost">予約</dt>
             <dd class="c-table__content c-table__content:ghost">
-                <?php echo get_vars('store', 'access');?>
+                <?php echo get_vars('store', 'reserve');?>
             </dd>
             <dt class="c-table__title c-table__title:ghost">平均予算</dt>
             <dd class="c-table__content c-table__content:ghost">

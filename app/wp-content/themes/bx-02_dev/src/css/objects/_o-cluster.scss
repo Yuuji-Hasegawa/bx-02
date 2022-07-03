@@ -36,6 +36,7 @@
     align-items: center;
     color: setting.brandcolor(base);
     gap: setting.spaces(xs);
+    flex-wrap: nowrap;
   }
   &__headLogo {
     color: #fff;
@@ -43,6 +44,7 @@
     font-family: setting.$font-family-fpt;
     font-size: setting.fontsize(l);
     font-weight: setting.fontweight(b);
+    flex-shrink: 0;
     .o-container\:is-header-scroll & {
       color: var(--c-txt);
     }
